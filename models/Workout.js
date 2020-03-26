@@ -20,15 +20,15 @@ const WorkoutSchema = new Schema({
         trim: true
 
     },
-    reps: {
+    Reps: {
         type: Number,
         trim: true
     },
-    distance: {
+    Distance: {
         type: Number,
         trim: true
     },
-    time: {
+    Duration: {
         type: Number,
         trim: true
     },
@@ -40,13 +40,15 @@ const WorkoutSchema = new Schema({
     exercises: []
 }, {
     toJSON: {
+        // include any virtual properties when data is requested
         virtuals: true
     }
 });
 
-WorkoutSchema.virtual("totalTime").get(function () {
+WorkoutSchema.virtual("totalDuration").get(function () {
+    // "reduce" array of exercises down to just the sum of their durations
     return this.exercises.reduce((total, exercise) => {
-        return total + exercise.time;
+        return total + exercise.duration;
     }, 0);
 });
 
