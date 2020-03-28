@@ -7,9 +7,9 @@ const path = require('path')
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-const User = require("./models/models");
+const User = require("./models/Workout");
 const app = express();
 app.use(logger("dev"));
 
